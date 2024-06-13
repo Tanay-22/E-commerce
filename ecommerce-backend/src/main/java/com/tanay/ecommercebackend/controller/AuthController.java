@@ -2,10 +2,12 @@ package com.tanay.ecommercebackend.controller;
 
 import com.tanay.ecommercebackend.config.JwtProvider;
 import com.tanay.ecommercebackend.exception.UserException;
+import com.tanay.ecommercebackend.model.Cart;
 import com.tanay.ecommercebackend.model.User;
 import com.tanay.ecommercebackend.repository.UserRepository;
 import com.tanay.ecommercebackend.request.LoginRequest;
 import com.tanay.ecommercebackend.response.AuthResponse;
+import com.tanay.ecommercebackend.service.CartService;
 import com.tanay.ecommercebackend.service.CustomUserServiceImplementation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +30,16 @@ public class AuthController
     private JwtProvider jwtProvider;
     private PasswordEncoder passwordEncoder;
     private CustomUserServiceImplementation customUserService;
+    private CartService cartService;
 
     public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtProvider jwtProvider,
-            CustomUserServiceImplementation customUserService)
+            CustomUserServiceImplementation customUserService, CartService cartService)
     {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtProvider = jwtProvider;
         this.customUserService = customUserService;
+        this.cartService = cartService;
     }
 
     @PostMapping("/signup")
@@ -58,6 +62,7 @@ public class AuthController
         createdUser.setPassword(passwordEncoder.encode(password));
 
         User savedUser = userRepository.save(createdUser);
+        Cart cart = cartService.createCart(savedUser);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(),
                 savedUser.getPassword());

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order
 {
     @Id
@@ -49,7 +49,10 @@ public class Order
     {
     }
 
-    public Order(Long id, String orderId, User user, List<OrderItem> orderItems, LocalDateTime orderDate, LocalDateTime deliveryDate, Address shippingAddress, PaymentDetails paymentDetails, double totalPrice, Integer totalDiscountedPrice, Integer discount, String orderStatus, int totalItem, LocalDateTime createdAt)
+    public Order(Long id, String orderId, User user, List<OrderItem> orderItems, LocalDateTime orderDate,
+                 LocalDateTime deliveryDate, Address shippingAddress, PaymentDetails paymentDetails,
+                 double totalPrice, Integer totalDiscountedPrice, Integer discount, String orderStatus,
+                 int totalItem, LocalDateTime createdAt)
     {
         this.id = id;
         this.orderId = orderId;

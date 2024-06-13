@@ -1,5 +1,6 @@
 package com.tanay.ecommercebackend.model;
 
+
 public class PaymentDetails
 {
     private String paymentMethod;
@@ -14,7 +15,9 @@ public class PaymentDetails
     {
     }
 
-    public PaymentDetails(String paymentMethod, String status, String paymentId, String razorpayPaymentLinkId, String razorpayPaymentLinkReferenceId, String razorpayPaymentLinkStatus, String razorpayPaymentId)
+    public PaymentDetails(String paymentMethod, String status, String paymentId, String razorpayPaymentLinkId,
+                          String razorpayPaymentLinkReferenceId, String razorpayPaymentLinkStatus,
+                          String razorpayPaymentId)
     {
         this.paymentMethod = paymentMethod;
         this.status = status;

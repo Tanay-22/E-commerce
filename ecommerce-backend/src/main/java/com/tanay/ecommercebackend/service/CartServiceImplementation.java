@@ -7,13 +7,19 @@ import com.tanay.ecommercebackend.model.Product;
 import com.tanay.ecommercebackend.model.User;
 import com.tanay.ecommercebackend.repository.CartRepository;
 import com.tanay.ecommercebackend.request.AddItemRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartServiceImplementation implements CartService
 {
+    @Autowired
     private CartRepository cartRepository;
+
+    @Autowired
     private CartItemService cartItemService;
+
+    @Autowired
     private ProductService productService;
 
     public CartServiceImplementation(CartRepository cartRepository, CartItemService cartItemService, ProductService productService)
@@ -43,10 +49,10 @@ public class CartServiceImplementation implements CartService
             CartItem cartItem = new CartItem();
             cartItem.setProduct(product);
             cartItem.setCart(cart);
-            cartItem.setQuantity(req.getQuantity());
+            cartItem.setQuantity(1);
             cartItem.setUserId(userId);
 
-            int price = req.getQuantity() * product.getDiscountedPrice();
+            int price = product.getDiscountedPrice();
             cartItem.setPrice(price);
             cartItem.setSize(req.getSize());
 

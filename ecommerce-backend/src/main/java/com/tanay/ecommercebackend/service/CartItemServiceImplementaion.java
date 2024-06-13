@@ -8,6 +8,7 @@ import com.tanay.ecommercebackend.model.Product;
 import com.tanay.ecommercebackend.model.User;
 import com.tanay.ecommercebackend.repository.CartItemRepository;
 import com.tanay.ecommercebackend.repository.CartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,15 +16,21 @@ import java.util.Optional;
 @Service
 public class CartItemServiceImplementaion implements CartItemService
 {
+    @Autowired
     private CartItemRepository cartItemRepository;
+
+    @Autowired
     private UserService userService;
+
+    @Autowired
     private CartRepository cartRepository;
 
     public CartItemServiceImplementaion()
     {
     }
 
-    public CartItemServiceImplementaion(CartItemRepository cartItemRepository, UserService userService, CartRepository cartRepository)
+    public CartItemServiceImplementaion(CartItemRepository cartItemRepository, UserService userService,
+                                        CartRepository cartRepository)
     {
         this.cartItemRepository = cartItemRepository;
         this.userService = userService;

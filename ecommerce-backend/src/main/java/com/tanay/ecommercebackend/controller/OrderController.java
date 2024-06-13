@@ -24,7 +24,7 @@ public class OrderController
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<Order> createOrder(@RequestBody Address shippingAddress,
                                              @RequestHeader("Authorization") String jwt)
         throws UserException
@@ -48,7 +48,7 @@ public class OrderController
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Order> findOrderById(@PathVariable("Id") Long orderId,
+    public ResponseEntity<Order> findOrderById(@PathVariable("id") Long orderId,
                                                @RequestHeader("Authorization") String jwt)
         throws UserException, OrderException
     {

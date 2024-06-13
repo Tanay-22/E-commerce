@@ -3,6 +3,7 @@ package com.tanay.ecommercebackend.controller;
 import com.tanay.ecommercebackend.exception.ProductException;
 import com.tanay.ecommercebackend.model.Product;
 import com.tanay.ecommercebackend.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class ProductController
 {
+    @Autowired
     private ProductService productService;
 
     @GetMapping("/products")
@@ -30,7 +32,7 @@ public class ProductController
     }
 
     @GetMapping("/products/id/{productId}")
-    public ResponseEntity<Product> FindProductByIdHandler(@PathVariable Long productId)
+    public ResponseEntity<Product> findProductByIdHandler(@PathVariable Long productId)
             throws ProductException
     {
         Product product = productService.findProductById(productId);
