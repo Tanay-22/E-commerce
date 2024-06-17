@@ -10,7 +10,7 @@ const RegisterForm = () =>
     const dispatch = useDispatch();
     const jwt = localStorage.getItem("jwt");
 
-    const {auth} = useSelector(store => store)
+    const auth = useSelector(store => store.auth)
 
     useEffect(() =>
     {

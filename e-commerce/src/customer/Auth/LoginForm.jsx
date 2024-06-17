@@ -22,7 +22,6 @@ const LoginForm = () =>
             password : data.get("password")
         }
         dispatch(login(userData))
-        console.log(userData);
     }
     return (
         <div>

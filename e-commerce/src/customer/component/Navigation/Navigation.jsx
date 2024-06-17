@@ -31,7 +31,7 @@ export default function Navigation()
     const [anchorEl, setAnchorEl] = useState(null);
     const openUserMenu = Boolean(anchorEl);
     const jwt = localStorage.getItem("jwt");
-    const {auth} = useSelector(store => store)
+    const auth = useSelector(store => store.auth);
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -470,7 +470,8 @@ export default function Navigation()
 
                                 {/* Cart */}
                                 <div className="ml-4 flow-root lg:ml-6">
-                                    <Button className="group -m-2 flex items-center p-2">
+                                    <Button onClick={() => navigate("/cart")}
+                                        className="group -m-2 flex items-center p-2">
                                         <ShoppingBagIcon
                                             className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                                             aria-hidden="true"

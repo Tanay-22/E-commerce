@@ -23,7 +23,6 @@ export const register = (userData) => async (dispatch) =>
     {
         const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
         const user = response.data;
-        console.log(user);
 
         if(user.jwt)
             localStorage.setItem("jwt", user.jwt);
@@ -47,7 +46,6 @@ export const login = (userData) => async (dispatch) =>
     {
         const response = await axios.post(`${API_BASE_URL}/auth/signin`, userData);
         const user = response.data;
-        console.log(user);
 
         if(user.jwt)
             localStorage.setItem("jwt", user.jwt);
@@ -72,7 +70,6 @@ export const getUser = (jwt) => async (dispatch) =>
         const response = await axios.get(`${API_BASE_URL}/api/users/profile`,
                                             { headers: { "Authorization" : `Bearer ${jwt}`}});
         const user = response.data;
-        console.log(user);
         dispatch(getUserSuccess(user));
     }
     catch(error)

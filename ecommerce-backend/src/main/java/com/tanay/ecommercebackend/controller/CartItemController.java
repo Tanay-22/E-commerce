@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/cart_item")
+@RequestMapping("/api/cart_items")
 public class CartItemController
 {
     @Autowired
@@ -39,6 +39,8 @@ public class CartItemController
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @PutMapping("/{cartItemId}")
+    @Operation(description = "Update Cart Item from Cart")
     public ResponseEntity<CartItem> updateCartItem(@RequestBody CartItem cartItem, @PathVariable Long cartItemId,
                                                    @RequestHeader("Authorization") String jwt)
             throws UserException, CartItemException
