@@ -18,10 +18,14 @@ const OrderSummary = () =>
     useEffect(() =>
     {
         dispatch(getOrderById(orderId));
-    },[orderId]);
+    },[dispatch, orderId]);
+
+    useEffect(() => {
+        console.log("Order state updated: ", order);
+    }, [order]);
 
     console.log("orderId", orderId);
-    console.log("fetched Orders ",order.order);
+    console.log("fetched Orders ",order.order.orderItems);
 
     const handleCheckOut = () =>
     {

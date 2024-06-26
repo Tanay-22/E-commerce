@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Card, CardContent, styled} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import trophy from "../../imgSrc/trophy.jpg"
+import trophy from "../../imgSrc/trophy.png"
 
 
 const TriangleImage = styled("img")(
@@ -24,7 +24,7 @@ const TrophyImage = styled("img")(
 const Achievement = () =>
 {
     return (
-        <Card sx={{position: "relative"}}>
+        <Card sx={{position: "relative", bgcolor: "#242B2E", color: "white"}}>
             <CardContent>
                 <Typography variant="h6" sx={{letterSpacing: "0.25px"}}>
                     Shop with DogRaj

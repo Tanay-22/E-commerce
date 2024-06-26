@@ -72,11 +72,11 @@ const Admin = () =>
 
 
     return (
-        <div>
+        <div className="relative">
             <div className="flex h-full">
                 <CssBaseline />
 
-                <div className="w-[15%] border border-r-gray-300 h-full">
+                <div className="w-[15%] border border-r-gray-300 h-full sticky top-0">
                     {drawer}
                 </div>
 
@@ -84,8 +84,8 @@ const Admin = () =>
                     <Routes>
                         <Route path = "/" element={<AdminDashboard />}></Route>
                         <Route path = "/product/create" element={<CreateProductForm />}></Route>
-                        <Route path = "/admin/products" element={<ProductTable />}></Route>
-                        <Route path = "/customers" element={<CustomerTable />}></Route>
+                        <Route path = "/products" element={<ProductTable />}></Route>
+                        <Route path = "customers" element={<CustomerTable />}></Route>
                         <Route path = "/orders" element={<OrdersTable />}></Route>
                     </Routes>
                 </div>

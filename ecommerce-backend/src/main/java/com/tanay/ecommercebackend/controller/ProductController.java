@@ -19,12 +19,20 @@ public class ProductController
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<Page<Product>> findProductByCategoryHandler(@RequestParam String category,
-              @RequestParam List<String> color, @RequestParam List<String> size, @RequestParam Integer minPrice,
-              @RequestParam Integer maxPrice, @RequestParam Integer minDiscount, @RequestParam String sort,
-              @RequestParam String stock, @RequestParam Integer pageNumber, @RequestParam Integer pageSize)
+    public ResponseEntity<Page<Product>> findProductByCategoryHandler(
+                                                            @RequestParam String category,
+                                                            @RequestParam List<String> color,
+                                                            @RequestParam List<String> sizes,
+                                                            @RequestParam Integer minPrice,
+                                                            @RequestParam Integer maxPrice,
+                                                            @RequestParam Integer minDiscount,
+                                                            @RequestParam String sort,
+                                                            @RequestParam String stock,
+                                                            @RequestParam Integer pageNumber,
+                                                            @RequestParam Integer pageSize)
     {
-        Page<Product> res = productService.getAllProduct(category, color, size, minPrice, maxPrice, minDiscount,
+        category = category.trim();
+        Page<Product> res = productService.getAllProduct(category, color, sizes, minPrice, maxPrice, minDiscount,
                 sort, stock, pageNumber, pageSize);
 
         System.out.println("Complete Products");

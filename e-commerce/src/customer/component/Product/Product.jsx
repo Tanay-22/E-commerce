@@ -87,7 +87,7 @@ export default function Product()
         const data =
         {
             category: param.levelThree,
-            color: colorValue || [],
+            colors: colorValue || [],
             sizes: sizeValue || [],
             minPrice,
             maxPrice,
@@ -97,7 +97,7 @@ export default function Product()
             pageSize: 10,
             stock: stockValue
         }
-        dispatch(findProducts(data))
+        dispatch(findProducts(data));
 
     }, [ param.levelThree, colorValue, sizeValue, priceValue, discountValue, sortValue,
                 pageNumberValue ]);
