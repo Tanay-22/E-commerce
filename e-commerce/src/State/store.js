@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, legacy_createStore, compose } from "redux";
+import { applyMiddleware, combineReducers, legacy_createStore, } from "redux";
 import { thunk } from "redux-thunk";
 import { authReducer } from "./Auth/Reducer";
 import {costumerProductReducer} from "./Product/Reducer";
@@ -15,6 +15,5 @@ const rootReducers = combineReducers(
                 adminOrder: adminOrderReducer
         }
 );
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = legacy_createStore(rootReducers, applyMiddleware(thunk));

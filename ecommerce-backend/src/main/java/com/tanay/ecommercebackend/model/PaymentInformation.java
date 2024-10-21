@@ -1,20 +1,19 @@
 package com.tanay.ecommercebackend.model;
 
 
-import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PaymentInformation
 {
-    @Column(name = "cardholder_name")
     private String cardholderName;
-
-    @Column(name = "cardr_number")
     private String cardNumber;
-
-    @Column(name = "expiration_date")
     private LocalDate expirationDate;
-
     private String cvv;
 }

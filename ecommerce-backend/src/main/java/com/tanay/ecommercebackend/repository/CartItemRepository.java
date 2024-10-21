@@ -14,6 +14,6 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long>
                 "ci.product = :product and " +
                 "ci.size = :size and " +
                 "ci.userId = :userId")
-    public CartItem isCartItemExist(@Param("cart") Cart cart, @Param("product") Product product,
-                                    @Param("size") String size, @Param("userId") Long userId);
+    CartItem isCartItemExist(@Param("cart") Cart cart, @Param("product") Product product,
+                             @Param("size") String size, @Param("userId") Long userId);
 }

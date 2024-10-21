@@ -1,6 +1,6 @@
 package com.tanay.ecommercebackend.request;
 
-import com.tanay.ecommercebackend.model.Size;
+import com.tanay.ecommercebackend.model.SizeStock;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class CreateProductRequest
 
     private String color;
 
-    private Set<Size> size = new HashSet<Size>();
+    private Set<SizeStock> sizeStock = new HashSet<SizeStock>();
 
     private String imgUrl;
 
@@ -111,14 +111,14 @@ public class CreateProductRequest
         this.color = color;
     }
 
-    public Set<Size> getSize()
+    public Set<SizeStock> getSize()
     {
-        return size;
+        return sizeStock;
     }
 
-    public void setSize(Set<Size> size)
+    public void setSize(Set<SizeStock> sizeStock)
     {
-        this.size = size;
+        this.sizeStock = sizeStock;
     }
 
     public String getImgUrl()

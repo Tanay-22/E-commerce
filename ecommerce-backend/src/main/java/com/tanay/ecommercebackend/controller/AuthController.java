@@ -5,6 +5,7 @@ import com.tanay.ecommercebackend.exception.UserException;
 import com.tanay.ecommercebackend.model.Cart;
 import com.tanay.ecommercebackend.model.User;
 import com.tanay.ecommercebackend.repository.UserRepository;
+import com.tanay.ecommercebackend.request.CreateUserRequest;
 import com.tanay.ecommercebackend.request.LoginRequest;
 import com.tanay.ecommercebackend.response.AuthResponse;
 import com.tanay.ecommercebackend.service.CartService;
@@ -43,12 +44,12 @@ public class AuthController
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException
+    public ResponseEntity<AuthResponse> createUserHandler(@RequestBody CreateUserRequest req) throws UserException
     {
-        String email = user.getEmail();
-        String password = user.getPassword();
-        String firstName = user.getFirstName();
-        String lastName = user.getLastName();
+        String email = req.getEmail();
+        String password = req.getPassword();
+        String firstName = req.getFirstName();
+        String lastName = req.getLastName();
 
         User isEmailExist = userRepository.findByEmail(email);
 

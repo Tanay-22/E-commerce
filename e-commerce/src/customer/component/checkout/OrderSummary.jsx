@@ -13,16 +13,13 @@ const OrderSummary = () =>
     const location = useLocation();
     const order = useSelector(store => store.order);
     const searchParams = new URLSearchParams(location.search);
-    const orderId = searchParams.get("order_id");
+    const orderId = parseInt(searchParams.get("order_id"));
 
     useEffect(() =>
     {
         dispatch(getOrderById(orderId));
     },[dispatch, orderId]);
 
-    useEffect(() => {
-        console.log("Order state updated: ", order);
-    }, [order]);
 
     console.log("orderId", orderId);
     console.log("fetched Orders ",order.order.orderItems);
@@ -57,7 +54,7 @@ const OrderSummary = () =>
 
                                     <div className="flex justify-between pt-3">
                                         <span className="pl-2">Discount</span>
-                                        <span className="text-green-600">&#8377;{order.order?.totalDiscount}</span>
+                                        <span className="text-green-600">₹{order.order?.totalDiscount}</span>
 
                                     </div>
 
@@ -69,7 +66,7 @@ const OrderSummary = () =>
 
                                     <div className="flex justify-between pt-3">
                                         <span className="pl-2">Total Amount</span>
-                                        <span className="text-green-600">&#8377;{order.order?.totalDiscountedPrice}</span>
+                                        <span className="text-green-600">₹{order.order?.totalDiscountedPrice}</span>
 
                                     </div>
                                 </div>

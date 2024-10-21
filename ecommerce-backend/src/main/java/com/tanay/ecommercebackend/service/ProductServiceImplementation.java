@@ -3,7 +3,6 @@ package com.tanay.ecommercebackend.service;
 import com.tanay.ecommercebackend.exception.ProductException;
 import com.tanay.ecommercebackend.model.Category;
 import com.tanay.ecommercebackend.model.Product;
-import com.tanay.ecommercebackend.model.Size;
 import com.tanay.ecommercebackend.repository.CategoryRepository;
 import com.tanay.ecommercebackend.repository.ProductRepository;
 import com.tanay.ecommercebackend.request.CreateProductRequest;
@@ -82,7 +81,7 @@ public class ProductServiceImplementation implements ProductService
         product.setImageUrl(req.getImgUrl());
         product.setBrand(req.getBrand());
         product.setPrice(req.getPrice());
-        product.setSizes((req.getSize()));
+        product.setSizeStocks((req.getSize()));
         product.setQuantity(req.getQuantity());
         product.setCategory(thirdLevel);
         product.setCreatedAt(LocalDateTime.now());
@@ -95,7 +94,7 @@ public class ProductServiceImplementation implements ProductService
     public String deleteProduct(Long productId) throws ProductException
     {
         Product product = findProductById(productId);
-        product.getSizes().clear();
+        product.getSizeStocks().clear();
         productRepository.delete(product);
 
         return "Product deleted successfully";

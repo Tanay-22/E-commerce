@@ -8,10 +8,14 @@ import {ComponentPreviews, useInitial} from "./dev";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./State/store";
+import {QueryClient, QueryClientProvider} from "react-query";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const queryClient = new QueryClient();
+
 root.render(
-    <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
         <DevSupport ComponentPreviews={ComponentPreviews}
                     useInitialHook={useInitial}
         >
@@ -22,7 +26,7 @@ root.render(
             </BrowserRouter>
 
         </DevSupport>
-    </React.StrictMode>
+    </QueryClientProvider>
 );
 
 reportWebVitals();

@@ -52,11 +52,11 @@ public class AdminProductController
     {
         Product product = productService.updateProduct(productId, req);
 
-        return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+        return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
     @PostMapping("/creates")
-    public ResponseEntity<ApiResponse> createMultipleProduct(@RequestBody CreateProductRequest req[])
+    public ResponseEntity<ApiResponse> createMultipleProduct(@RequestBody CreateProductRequest[] req)
     {
         for(CreateProductRequest product : req)
             productService.createProduct(product);

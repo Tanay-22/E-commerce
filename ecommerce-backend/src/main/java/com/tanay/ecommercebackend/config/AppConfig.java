@@ -33,7 +33,10 @@ public class AppConfig
                     {
                         CorsConfiguration config = new CorsConfiguration();
 
-                        config.setAllowedOrigins(Arrays.asList("http://localhost:3000/"));
+                        config.setAllowedOrigins(Arrays.asList(
+                                "http://localhost:3000/",
+                                "https://knullshop.vercel.app/"
+                        ));
                         config.setAllowedMethods(Collections.singletonList("*"));
                         config.setAllowCredentials(true);
                         config.setAllowedHeaders(Collections.singletonList("*"));

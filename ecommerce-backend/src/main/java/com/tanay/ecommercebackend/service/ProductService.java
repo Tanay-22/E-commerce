@@ -2,7 +2,6 @@ package com.tanay.ecommercebackend.service;
 
 import com.tanay.ecommercebackend.exception.ProductException;
 import com.tanay.ecommercebackend.model.Product;
-import com.tanay.ecommercebackend.model.Size;
 import com.tanay.ecommercebackend.request.CreateProductRequest;
 import org.springframework.data.domain.Page;
 
