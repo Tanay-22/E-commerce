@@ -5,18 +5,19 @@ import com.tanay.ecommercebackend.exception.UserException;
 import com.tanay.ecommercebackend.model.Cart;
 import com.tanay.ecommercebackend.model.CartItem;
 import com.tanay.ecommercebackend.model.Product;
+import com.tanay.ecommercebackend.model.SizeStock;
 
 public interface CartItemService
 {
-    public CartItem createCartItem(CartItem cartItem);
+    CartItem createCartItem(CartItem cartItem);
 
-    public CartItem updateCartItem(Long userId, Long id, CartItem cartItem)
+    CartItem updateCartItem(Long userId, Long id, CartItem cartItem)
             throws CartItemException, UserException;
 
-    public CartItem isCartItemExist(Cart cart, Product product, String size, Long userId);
+    CartItem isCartItemExist(Cart cart, Product product, SizeStock size, Long userId);
 
-    public void removeCartItem(Long userId, Long cartItemId) throws CartItemException, UserException;
+    void removeCartItem(Long userId, Long cartItemId) throws CartItemException, UserException;
 
-    public CartItem findCartItemById(Long cartItemId) throws CartItemException;
+    CartItem findCartItemById(Long cartItemId) throws CartItemException;
 
 }

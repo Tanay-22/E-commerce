@@ -15,7 +15,7 @@ public class Category
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotNull
     @Size(max = 50)

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CartServiceImplementation implements CartService
+public class CartServiceImpl implements CartService
 {
     @Autowired
     private CartRepository cartRepository;
@@ -22,7 +22,8 @@ public class CartServiceImplementation implements CartService
     @Autowired
     private ProductService productService;
 
-    public CartServiceImplementation(CartRepository cartRepository, CartItemService cartItemService, ProductService productService)
+    public CartServiceImpl(CartRepository cartRepository, CartItemService cartItemService,
+                           ProductService productService)
     {
         this.cartRepository = cartRepository;
         this.cartItemService = cartItemService;
@@ -34,6 +35,7 @@ public class CartServiceImplementation implements CartService
     {
         Cart cart = new Cart();
         cart.setUser(user);
+
         return cartRepository.save(cart);
     }
 
@@ -52,7 +54,7 @@ public class CartServiceImplementation implements CartService
             cartItem.setQuantity(1);
             cartItem.setUserId(userId);
 
-            int price = product.getDiscountedPrice();
+            Double price = product.getDiscountedPrice();
             cartItem.setPrice(price);
             cartItem.setSize(req.getSize());
 

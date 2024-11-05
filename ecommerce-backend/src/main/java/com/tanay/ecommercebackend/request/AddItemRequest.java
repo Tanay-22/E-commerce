@@ -1,37 +1,15 @@
 package com.tanay.ecommercebackend.request;
 
+import com.tanay.ecommercebackend.model.SizeStock;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AddItemRequest
 {
     private Long productId;
-    private String size;
-
-    public AddItemRequest()
-    {
-    }
-
-    public AddItemRequest(Long productId, String size)
-    {
-        this.productId = productId;
-        this.size = size;
-    }
-
-    public Long getProductId()
-    {
-        return productId;
-    }
-
-    public void setProductId(Long productId)
-    {
-        this.productId = productId;
-    }
-
-    public String getSize()
-    {
-        return size;
-    }
-
-    public void setSize(String size)
-    {
-        this.size = size;
-    }
+    private SizeStock size;
 }

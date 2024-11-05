@@ -18,7 +18,7 @@ public class AdminOrderController
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Order>> getAllOrdersHandler()
     {
         List<Order> orders = orderService.getAllOrders();

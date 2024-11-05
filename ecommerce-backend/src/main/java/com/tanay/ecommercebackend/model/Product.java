@@ -40,7 +40,7 @@ public class Product
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> review = new ArrayList<>();
-    private int numRatings;
+    private Integer numRatings;
 
     @ManyToOne
     private Category category;

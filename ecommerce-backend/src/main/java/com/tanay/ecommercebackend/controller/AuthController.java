@@ -10,6 +10,7 @@ import com.tanay.ecommercebackend.request.LoginRequest;
 import com.tanay.ecommercebackend.response.AuthResponse;
 import com.tanay.ecommercebackend.service.CartService;
 import com.tanay.ecommercebackend.service.CustomUserServiceImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -27,14 +28,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class AuthController
 {
-    private UserRepository userRepository;
-    private JwtProvider jwtProvider;
-    private PasswordEncoder passwordEncoder;
-    private CustomUserServiceImplementation customUserService;
-    private CartService cartService;
+    private final UserRepository userRepository;
+    private final JwtProvider jwtProvider;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomUserServiceImplementation customUserService;
+    private final CartService cartService;
 
-    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtProvider jwtProvider,
-            CustomUserServiceImplementation customUserService, CartService cartService)
+    @Autowired
+    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                          JwtProvider jwtProvider, CustomUserServiceImplementation customUserService,
+                          CartService cartService)
     {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -44,7 +47,8 @@ public class AuthController
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponse> createUserHandler(@RequestBody CreateUserRequest req) throws UserException
+    public ResponseEntity<AuthResponse> createUserHandler(@RequestBody CreateUserRequest req)
+            throws UserException
     {
         String email = req.getEmail();
         String password = req.getPassword();
@@ -75,7 +79,7 @@ public class AuthController
         authResponse.setJwt(token);
         authResponse.setMessage("SignUp Successful");
 
-        return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
+        return new ResponseEntity<  >(authResponse, HttpStatus.CREATED);
     }
 
     @PostMapping("/signin")
@@ -93,7 +97,7 @@ public class AuthController
         authResponse.setJwt(token);
         authResponse.setMessage("SignIn Successful");
 
-        return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
+        return new ResponseEntity<>(authResponse, HttpStatus.CREATED);
     }
 
     private Authentication authenticate(String username, String password)

@@ -4,17 +4,19 @@ import com.tanay.ecommercebackend.config.JwtProvider;
 import com.tanay.ecommercebackend.exception.UserException;
 import com.tanay.ecommercebackend.model.User;
 import com.tanay.ecommercebackend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserServiceImplementation implements UserService
+public class UserServiceImpl implements UserService
 {
-    private UserRepository userRepository;
-    private JwtProvider jwtProvider;
+    private final UserRepository userRepository;
+    private final JwtProvider jwtProvider;
 
-    public UserServiceImplementation(UserRepository userRepository, JwtProvider jwtProvider)
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, JwtProvider jwtProvider)
     {
         this.userRepository = userRepository;
         this.jwtProvider = jwtProvider;

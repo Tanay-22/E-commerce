@@ -16,10 +16,16 @@ import java.util.List;
 @RequestMapping("/api/admin/products")
 public class AdminProductController
 {
-    @Autowired
-    private ProductService productService;
 
-    @PostMapping("/")
+    private final ProductService productService;
+
+    @Autowired
+    public AdminProductController(ProductService productService)
+    {
+        this.productService = productService;
+    }
+
+    @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest req)
     {
         Product product = productService.createProduct(req);
@@ -55,7 +61,7 @@ public class AdminProductController
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
-    @PostMapping("/creates")
+    @PostMapping("/create")
     public ResponseEntity<ApiResponse> createMultipleProduct(@RequestBody CreateProductRequest[] req)
     {
         for(CreateProductRequest product : req)

@@ -1,5 +1,6 @@
 package com.tanay.ecommercebackend.controller;
 
+import com.tanay.ecommercebackend.config.JwtConstant;
 import com.tanay.ecommercebackend.exception.UserException;
 import com.tanay.ecommercebackend.model.User;
 import com.tanay.ecommercebackend.service.UserService;
@@ -15,15 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/users")
 public class UserController
 {
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService)
+    {
+        this.userService = userService;
+    }
 
     @GetMapping("/profile")
-    public ResponseEntity<User> getUserProfileHandler(@RequestHeader("Authorization") String jwt)
+    public ResponseEntity<User> getUserProfileHandler(@RequestHeader(JwtConstant.JWT_HEADER) String jwt)
         throws UserException
     {
         User user = userService.findUserProfileByJwt(jwt);
 
-        return new ResponseEntity<User>(user, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
     }
 }

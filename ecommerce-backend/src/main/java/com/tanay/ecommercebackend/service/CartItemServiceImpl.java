@@ -2,39 +2,24 @@ package com.tanay.ecommercebackend.service;
 
 import com.tanay.ecommercebackend.exception.CartItemException;
 import com.tanay.ecommercebackend.exception.UserException;
-import com.tanay.ecommercebackend.model.Cart;
-import com.tanay.ecommercebackend.model.CartItem;
-import com.tanay.ecommercebackend.model.Product;
-import com.tanay.ecommercebackend.model.User;
+import com.tanay.ecommercebackend.model.*;
 import com.tanay.ecommercebackend.repository.CartItemRepository;
-import com.tanay.ecommercebackend.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class CartItemServiceImplementaion implements CartItemService
+public class CartItemServiceImpl implements CartItemService
 {
-    @Autowired
-    private CartItemRepository cartItemRepository;
+    private final CartItemRepository cartItemRepository;
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private CartRepository cartRepository;
-
-    public CartItemServiceImplementaion()
-    {
-    }
-
-    public CartItemServiceImplementaion(CartItemRepository cartItemRepository, UserService userService,
-                                        CartRepository cartRepository)
+    public CartItemServiceImpl(CartItemRepository cartItemRepository, UserService userService)
     {
         this.cartItemRepository = cartItemRepository;
         this.userService = userService;
-        this.cartRepository = cartRepository;
     }
 
     @Override
@@ -44,8 +29,7 @@ public class CartItemServiceImplementaion implements CartItemService
         cartItem.setPrice(cartItem.getProduct().getPrice() * cartItem.getQuantity());
         cartItem.setDiscountedPrice(cartItem.getProduct().getDiscountedPrice() * cartItem.getQuantity());
 
-        CartItem createdCartItem = cartItemRepository.save(cartItem);
-        return createdCartItem;
+        return cartItemRepository.save(cartItem);
     }
 
     @Override
@@ -64,10 +48,9 @@ public class CartItemServiceImplementaion implements CartItemService
     }
 
     @Override
-    public CartItem isCartItemExist(Cart cart, Product product, String size, Long userId)
+    public CartItem isCartItemExist(Cart cart, Product product, SizeStock size, Long userId)
     {
-        CartItem cartItem = cartItemRepository.isCartItemExist(cart, product, size, userId);
-        return cartItem;
+        return cartItemRepository.isCartItemExist(cart, product, size, userId);
     }
 
     @Override

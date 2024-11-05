@@ -3,6 +3,7 @@ package com.tanay.ecommercebackend.repository;
 import com.tanay.ecommercebackend.model.Cart;
 import com.tanay.ecommercebackend.model.CartItem;
 import com.tanay.ecommercebackend.model.Product;
+import com.tanay.ecommercebackend.model.SizeStock;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,5 +16,5 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long>
                 "ci.size = :size and " +
                 "ci.userId = :userId")
     CartItem isCartItemExist(@Param("cart") Cart cart, @Param("product") Product product,
-                             @Param("size") String size, @Param("userId") Long userId);
+                             @Param("size") SizeStock size, @Param("userId") Long userId);
 }

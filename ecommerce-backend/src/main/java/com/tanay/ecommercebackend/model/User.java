@@ -1,6 +1,7 @@
 package com.tanay.ecommercebackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tanay.ecommercebackend.domain.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,16 +25,11 @@ public class User
     private String lastName;
     private String email;
     private String password;
-    private String role;
+    private Role role;
     private Long mobile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
-
-//    @Embedded
-//    @ElementCollection
-//    @CollectionTable(name = "payment_information", joinColumns = @JoinColumn(name = "user_id"))
-//    private List<PaymentInformation> paymentInformations= new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
